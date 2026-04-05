@@ -26,4 +26,4 @@
 - [x] 1.11*: unicafe step 6
 - [x] 1.12*: anecdotes step 1
 - [x] 1.13*: anecdotes step 2
-- [ ] 1.14*: anecdotes step 3
+- [x] 1.14*: anecdotes step 3
