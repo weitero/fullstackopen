@@ -12,19 +12,19 @@ const Statistics = (props) => {
 
   return (
     <div>
-      <Display feedback={"good"} count={good} />
-      <Display feedback={"neutral"} count={neutral} />
-      <Display feedback={"bad"} count={bad} />
-      <Display feedback={"all"} count={total} />
-      <Display feedback={"average"} count={(good - bad) / total} />
-      <Display feedback={"positive"} count={100 * (good / total) + " %"} />
+      <StatisticsLine text='good' value={good} />
+      <StatisticsLine text='neutral' value={neutral} />
+      <StatisticsLine text='bad' value={bad} />
+      <StatisticsLine text='all' value={total} />
+      <StatisticsLine text='average' value={(good - bad) / total} />
+      <StatisticsLine text='positive' value={100 * (good / total) + " %"} />
     </div>
   );
 };
 
-const Display = ({ feedback, count }) => (
+const StatisticsLine = ({ text, value }) => (
   <p>
-    {feedback} {count}
+    {text} {value}
   </p>
 );
 
