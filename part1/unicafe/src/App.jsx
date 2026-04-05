@@ -12,17 +12,17 @@ const Statistics = (props) => {
 
   return (
     <div>
-      <StatisticsLine text='good' value={good} />
-      <StatisticsLine text='neutral' value={neutral} />
-      <StatisticsLine text='bad' value={bad} />
-      <StatisticsLine text='all' value={total} />
-      <StatisticsLine text='average' value={(good - bad) / total} />
-      <StatisticsLine text='positive' value={100 * (good / total) + " %"} />
+      <StatisticLine text='good' value={good} />
+      <StatisticLine text='neutral' value={neutral} />
+      <StatisticLine text='bad' value={bad} />
+      <StatisticLine text='all' value={total} />
+      <StatisticLine text='average' value={(good - bad) / total} />
+      <StatisticLine text='positive' value={100 * (good / total) + " %"} />
     </div>
   );
 };
 
-const StatisticsLine = ({ text, value }) => (
+const StatisticLine = ({ text, value }) => (
   <p>
     {text} {value}
   </p>
