@@ -18,12 +18,14 @@ const App = () => {
   ];
 
   const [selected, setSelected] = useState(0);
+  // https://stackoverflow.com/questions/20222501/how-to-create-a-zero-filled-javascript-array-of-arbitrary-length/22209781
   const [votes, setVotes] = useState(Array(anecdotes.length).fill(0));
   const [mostVoted, setMostVoted] = useState(0);
 
   const handleVoting = () => {
     const copy = [...votes];
     copy[selected] += 1;
+    // https://stackoverflow.com/questions/11301438/return-index-of-greatest-value-in-an-array
     const mostVotedIndex = copy.indexOf(Math.max(...copy));
     // console.log(mostVotedIndex);
 
