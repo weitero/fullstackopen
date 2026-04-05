@@ -1,5 +1,10 @@
 import { useState } from "react";
 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+const getRandomInt = (max) => {
+  return Math.floor(Math.random() * max);
+};
+
 const App = () => {
   const anecdotes = [
     "If it hurts, do it more often.",
@@ -14,7 +19,18 @@ const App = () => {
 
   const [selected, setSelected] = useState(0);
 
-  return <div>{anecdotes[selected]}</div>;
+  const handleSelection = () => {
+    const randIndex = getRandomInt(anecdotes.length);
+    // console.log(randIndex);
+    setSelected(randIndex);
+  };
+
+  return (
+    <div>
+      <div>{anecdotes[selected]}</div>
+      <button onClick={handleSelection}>next anecdote</button>
+    </div>
+  );
 };
 
 export default App;
