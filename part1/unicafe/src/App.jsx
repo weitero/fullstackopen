@@ -5,6 +5,11 @@ const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>;
 const Statistics = (props) => {
   const { good, neutral, bad } = props;
   const total = good + neutral + bad;
+
+  if (total === 0) {
+    return <p>No feedback given</p>;
+  }
+
   return (
     <div>
       <Display feedback={"good"} count={good} />
