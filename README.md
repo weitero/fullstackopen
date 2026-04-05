@@ -23,7 +23,7 @@
 - [x] 1.8: unicafe step 3
 - [x] 1.9: unicafe step 4
 - [x] 1.10: unicafe step 5
-- [ ] 1.11*: unicafe step 6
+- [x] 1.11*: unicafe step 6
 - [ ] 1.12*: anecdotes step 1
 - [ ] 1.13*: anecdotes step 2
 - [ ] 1.14*: anecdotes step 3
