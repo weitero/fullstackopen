@@ -73,3 +73,19 @@ sequenceDiagram
 
   Note right of browser: The browser executes the callback function that renders the notes
 ```
+
+# 0.6: New note in Single page app diagram
+
+```mermaid
+sequenceDiagram
+  participant browser
+  participant server
+
+  Note right of browser: The browser redraws the note list with the new note
+  Note right of browser: The browser sends the new note to the server
+
+  browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+  activate server
+  server-->>browser: {"message":"note created"}
+  deactivate server
+```
