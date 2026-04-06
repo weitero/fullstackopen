@@ -5,6 +5,13 @@ const Content = (props) => (
     {props.parts.map((part) => (
       <Part key={part.id} part={part} />
     ))}
+    <Total
+      total={props.parts
+        .map((part) => part.exercises)
+        .reduce((a, b) => {
+          return a + b;
+        }, 0)}
+    />
   </div>
 );
 
@@ -14,7 +21,11 @@ const Part = (props) => (
   </p>
 );
 
-const Total = (props) => <p>Number of exercises {props.total}</p>;
+const Total = (props) => (
+  <strong>
+    <p>total of {props.total} exercises</p>
+  </strong>
+);
 
 const Course = ({ course }) => {
   return (
