@@ -35,3 +35,8 @@
 - [x] 2.3*: Course information step 8
 - [x] 2.4: Course information step 9
 - [x] 2.5: Separate module step 10
+- [ ] 2.6: The Phonebook Step 1
+- [ ] 2.7: The Phonebook Step 2
+- [ ] 2.8: The Phonebook Step 3
+- [ ] 2.9*: The Phonebook Step 4
+- [ ] 2.10: The Phonebook Step 5
