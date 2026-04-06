@@ -34,4 +34,4 @@
 - [x] 2.2: Course information step 7
 - [x] 2.3*: Course information step 8
 - [x] 2.4: Course information step 9
-- [ ] 2.5: Separate module step 10
+- [x] 2.5: Separate module step 10
