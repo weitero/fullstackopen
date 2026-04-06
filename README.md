@@ -39,4 +39,4 @@
 - [x] 2.7: The Phonebook Step 2
 - [x] 2.8: The Phonebook Step 3
 - [x] 2.9*: The Phonebook Step 4
-- [ ] 2.10: The Phonebook Step 5
+- [x] 2.10: The Phonebook Step 5
