@@ -35,13 +35,13 @@ const Persons = ({ persons, newFilter }) => {
       return p.name.toLocaleLowerCase().includes(newFilter.toLocaleLowerCase());
     })
     .map((p) => {
-      return <Person p={p} />;
+      return <Person key={p.name} p={p} />;
     });
 };
 
 const Person = ({ p }) => {
   return (
-    <p key={p.name}>
+    <p>
       {p.name} {p.number}
     </p>
   );
