@@ -44,4 +44,4 @@
 - [x] 2.12: The Phonebook step 7
 - [x] 2.13: The Phonebook step 8
 - [x] 2.14: The Phonebook step 9
-- [ ] 2.15*: The Phonebook step 10
+- [x] 2.15*: The Phonebook step 10
