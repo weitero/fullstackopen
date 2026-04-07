@@ -110,6 +110,9 @@ const App = () => {
           })
           .catch(() => {
             setErrorMessage(`Information of ${newName} has already been removed from server`);
+            setTimeout(() => {
+              setErrorMessage(null);
+            }, 5000);
           });
       }
     }
@@ -123,8 +126,17 @@ const App = () => {
       .then((pObj) => {
         setPersons(persons.filter((p) => p.id !== pObj.id));
       })
+      .then(() => {
+        setMessage(`Deleted ${newName}'s number`);
+        setTimeout(() => {
+          setMessage(null);
+        }, 5000);
+      })
       .catch(() => {
         setErrorMessage(`Information of ${newName} has already been removed from server`);
+        setTimeout(() => {
+          setErrorMessage(null);
+        }, 5000);
       });
   };
 
