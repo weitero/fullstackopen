@@ -1,4 +1,5 @@
 import personService from "./services/persons";
+import Notification from "./components/Notification";
 import { useEffect, useState } from "react";
 
 const Filter = (props) => {
@@ -63,6 +64,7 @@ const App = () => {
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [newFilter, setNewFilter] = useState("");
+  const [message, setMessage] = useState(null);
 
   useEffect(() => {
     personService.getAll().then((persons) => {
@@ -78,17 +80,33 @@ const App = () => {
         name: newName,
         number: newNumber,
       };
-      personService.add(newObj).then((pObj) => {
-        setPersons(persons.concat(pObj));
-      });
+      personService
+        .add(newObj)
+        .then((pObj) => {
+          setPersons(persons.concat(pObj));
+        })
+        .then(() => {
+          setMessage(`Added ${newName}`);
+          setTimeout(() => {
+            setMessage(null);
+          }, 5000);
+        });
     } else {
       if (
         confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)
       ) {
         const updatePersonObj = { ...personObj, number: newNumber };
-        personService.update(personObj.id, updatePersonObj).then((r) => {
-          setPersons(persons.map((p) => (p.id === r.id ? r : p)));
-        });
+        personService
+          .update(personObj.id, updatePersonObj)
+          .then((r) => {
+            setPersons(persons.map((p) => (p.id === r.id ? r : p)));
+          })
+          .then(() => {
+            setMessage(`Updated ${newName}'s number`);
+            setTimeout(() => {
+              setMessage(null);
+            }, 5000);
+          });
       }
     }
     setNewName("");
@@ -115,6 +133,7 @@ const App = () => {
     <div>
       <h2>Phonebook</h2>
 
+      <Notification message={message} messageType={"success"} />
       <Filter value={newFilter} onChange={handleFilterChange} />
 
       <h3>add a new</h3>
