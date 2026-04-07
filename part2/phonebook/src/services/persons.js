@@ -9,4 +9,8 @@ const add = (personObj) => {
   return axios.post(baseUrl, personObj).then((response) => response.data);
 };
 
-export default { getAll, add };
+const del = (id) => {
+  return axios.delete(`${baseUrl}/${id}`).then((response) => response.data);
+};
+
+export default { getAll, add, del };

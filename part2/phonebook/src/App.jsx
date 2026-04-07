@@ -27,7 +27,7 @@ const PersonForm = (props) => {
   );
 };
 
-const Persons = ({ persons, newFilter }) => {
+const Persons = ({ persons, newFilter, delPerson }) => {
   return persons
     .filter((p) => {
       if (newFilter === "") {
@@ -36,14 +36,24 @@ const Persons = ({ persons, newFilter }) => {
       return p.name.toLocaleLowerCase().includes(newFilter.toLocaleLowerCase());
     })
     .map((p) => {
-      return <Person key={p.name} p={p} />;
+      return (
+        <Person
+          key={p.id}
+          p={p}
+          delPerson={() => {
+            if (confirm(`Delete ${p.name}?`)) {
+              delPerson(p.id);
+            }
+          }}
+        />
+      );
     });
 };
 
-const Person = ({ p }) => {
+const Person = ({ p, delPerson }) => {
   return (
     <p>
-      {p.name} {p.number}
+      {p.name} {p.number} <button onClick={delPerson}>delete</button>
     </p>
   );
 };
@@ -78,6 +88,12 @@ const App = () => {
     });
   };
 
+  const delPerson = (id) => {
+    personService.del(id).then((pObj) => {
+      setPersons(persons.filter((p) => p.id !== pObj.id));
+    });
+  };
+
   const handleNameChange = (event) => {
     setNewName(event.target.value);
   };
@@ -106,7 +122,7 @@ const App = () => {
 
       <h3>Numbers</h3>
 
-      <Persons persons={persons} newFilter={newFilter} />
+      <Persons persons={persons} newFilter={newFilter} delPerson={delPerson} />
     </div>
   );
 };
