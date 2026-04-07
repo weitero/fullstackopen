@@ -125,9 +125,7 @@ const App = () => {
       .del(id)
       .then((pObj) => {
         setPersons(persons.filter((p) => p.id !== pObj.id));
-      })
-      .then(() => {
-        setMessage(`Deleted ${newName}'s number`);
+        setMessage(`Deleted ${pObj.name}`);
         setTimeout(() => {
           setMessage(null);
         }, 5000);
