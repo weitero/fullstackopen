@@ -47,6 +47,6 @@
 - [x] 2.15*: The Phonebook step 10
 - [x] 2.16: Phonebook step 11
 - [x] 2.17*: Phonebook step 12
-- [ ] 2.18* Data for countries, step 1
+- [x] 2.18* Data for countries, step 1
 - [ ] 2.19*: Data for countries, step 2
 - [ ] 2.20*: Data for countries, step 3
