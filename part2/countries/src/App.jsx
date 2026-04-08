@@ -25,7 +25,7 @@ const App = () => {
   };
 
   const handleShowSingle = (name) => {
-    setCountries([countries.find((c) => c.name.common === name)]);
+    countriesService.getSingle(name).then((c) => setCountries([c]));
   };
 
   return (
