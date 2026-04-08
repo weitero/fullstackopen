@@ -5,4 +5,8 @@ const getAll = () => {
   return axios.get(`${baseUrl}/all`).then((res) => res.data);
 };
 
-export default { getAll };
+const getSingle = (name) => {
+  return axios.get(`${baseUrl}/name/${name}`).then((res) => res.data);
+};
+
+export default { getAll, getSingle };
