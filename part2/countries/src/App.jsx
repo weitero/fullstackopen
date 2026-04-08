@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Countries from "./components/Countries";
 import countriesService from "./services/countries";
+import Display from "./components/Display";
 
 const App = () => {
   const [value, setValue] = useState("");
@@ -8,12 +8,13 @@ const App = () => {
   const [searchWord, setSearchWord] = useState(null);
 
   useEffect(() => {
-    console.log("effect run, searchWord is now: ", searchWord);
     if (searchWord) {
-      console.log("fetching countries...");
-      countriesService.getAll().then((c) => {
-        console.log(c);
-        setCountries(c);
+      countriesService.getAll().then((countries) => {
+        setCountries(
+          countries.filter((c) =>
+            c.name.common.toLocaleLowerCase().includes(searchWord.toLocaleLowerCase()),
+          ),
+        );
       });
     }
   }, [searchWord]);
@@ -23,17 +24,14 @@ const App = () => {
     setSearchWord(e.target.value);
   };
 
-  const filteredCountries = countries.filter((c) => {
-    if (!searchWord) {
-      return true;
-    }
-    return c.name.common.toLocaleLowerCase().includes(searchWord.toLocaleLowerCase());
-  });
+  const handleShowSingle = (name) => {
+    setCountries([countries.find((c) => c.name.common === name)]);
+  };
 
   return (
     <div>
       find countries <input value={value} onChange={handleOnChange} />
-      <Countries countries={filteredCountries} />
+      <Display countries={countries} handleShowSingle={handleShowSingle} />
     </div>
   );
 };
