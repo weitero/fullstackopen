@@ -1,17 +1,10 @@
-const Countries = ({ countries, searchWord }) => {
-  const filteredCountries = countries.filter((c) => {
-    if (!searchWord) {
-      return true;
-    }
-    return c.name.common.toLocaleLowerCase().includes(searchWord.toLocaleLowerCase());
-  });
-
-  if (filteredCountries.length > 10) {
+const Countries = ({ countries }) => {
+  if (countries.length > 10) {
     return <p>Too many matches, specify another filter</p>;
-  } else if (filteredCountries.length > 1) {
-    return filteredCountries.map((c) => <p key={c.name.common}>{c.name.common}</p>);
+  } else if (countries.length > 1) {
+    return countries.map((c) => <p key={c.name.common}>{c.name.common}</p>);
   } else {
-    return filteredCountries.map((c) => {
+    return countries.map((c) => {
       return (
         <div key={c.name.common}>
           <h1>{c.name.common}</h1>

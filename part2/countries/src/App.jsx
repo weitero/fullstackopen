@@ -23,10 +23,17 @@ const App = () => {
     setSearchWord(e.target.value);
   };
 
+  const filteredCountries = countries.filter((c) => {
+    if (!searchWord) {
+      return true;
+    }
+    return c.name.common.toLocaleLowerCase().includes(searchWord.toLocaleLowerCase());
+  });
+
   return (
     <div>
       find countries <input value={value} onChange={handleOnChange} />
-      <Countries countries={countries} searchWord={searchWord} />
+      <Countries countries={filteredCountries} />
     </div>
   );
 };
