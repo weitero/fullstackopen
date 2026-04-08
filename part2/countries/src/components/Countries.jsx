@@ -1,7 +1,8 @@
 const Countries = ({ countries, handleShowSingle }) => {
-  return countries.map((c) => (
-    <p key={c.name.common}>
-      {c.name.common} <button onClick={() => handleShowSingle(c.name.common)}>Show</button>
+  return countries.map((country) => (
+    <p key={country.name.common}>
+      {country.name.common}{" "}
+      <button onClick={() => handleShowSingle(country.name.common)}>Show</button>
     </p>
   ));
 };
