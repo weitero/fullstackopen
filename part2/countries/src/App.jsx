@@ -8,15 +8,23 @@ const App = () => {
   const [searchWord, setSearchWord] = useState(null);
 
   useEffect(() => {
-    if (searchWord) {
-      countriesService.getAll().then((countries) => {
-        setCountries(
-          countries.filter((c) =>
-            c.name.common.toLocaleLowerCase().includes(searchWord.toLocaleLowerCase()),
-          ),
-        );
-      });
-    }
+    // Adapted from: https://erikmartinjordan.com/start-search-user-not-typing
+    // Another ref: https://stackoverflow.com/questions/77123890/debounce-in-reactjs
+    // This is to avoid API request after each keystroke
+    const timer = setTimeout(() => {
+      console.log(`search word: ${searchWord}`);
+      if (searchWord) {
+        console.log("fetching...");
+        countriesService.getAll().then((countries) => {
+          setCountries(
+            countries.filter((c) =>
+              c.name.common.toLocaleLowerCase().includes(searchWord.toLocaleLowerCase()),
+            ),
+          );
+        });
+      }
+    }, 1000);
+    return () => clearTimeout(timer);
   }, [searchWord]);
 
   const handleOnChange = (e) => {
