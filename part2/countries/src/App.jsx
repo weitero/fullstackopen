@@ -22,6 +22,9 @@ const App = () => {
   const handleOnChange = (e) => {
     setValue(e.target.value);
     setSearchWord(e.target.value);
+    if (e.target.value === "") {
+      setCountries([]);
+    }
   };
 
   const handleShowSingle = (name) => {
