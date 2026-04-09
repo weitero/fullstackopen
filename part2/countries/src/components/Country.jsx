@@ -8,7 +8,11 @@ const Country = ({ country }) => {
   useEffect(() => {
     console.log("fetching weather...");
     weatherService
-      .getCurrentWeather(country.capitalInfo.latlng[0], country.capitalInfo.latlng[1])
+      // .getCurrentWeather(country.capitalInfo.latlng[0], country.capitalInfo.latlng[1])
+      .getCurrentWeatherFromOpenWeather(
+        country.capitalInfo.latlng[0],
+        country.capitalInfo.latlng[1],
+      )
       .then((res) => {
         // console.log(res);
         setWeather(res);
