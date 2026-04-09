@@ -14,7 +14,7 @@ const App = () => {
     const timer = setTimeout(() => {
       console.log(`search word: ${searchWord}`);
       if (searchWord) {
-        console.log("fetching...");
+        console.log("fetching countries...");
         countriesService.getAll().then((countries) => {
           setCountries(
             countries.filter((c) =>
