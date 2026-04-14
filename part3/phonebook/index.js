@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const app = express();
 
 app.use(express.json());
+app.use(express.static("dist"));
 
 morgan.token("data", (request, response) => {
   return JSON.stringify(request.body);
@@ -52,8 +53,31 @@ app.get("/api/persons/:id", (request, response) => {
 
 app.delete("/api/persons/:id", (request, response) => {
   const id = request.params.id;
-  persons = persons.filter((p) => p.id !== id);
-  response.status(204).end();
+  const person = persons.find((p) => p.id === id);
+  if (person) {
+    persons = persons.filter((p) => p.id !== id);
+    response.json(person);
+  } else {
+    response.status(204).end();
+  }
+});
+
+app.put("/api/persons/:id", (request, response) => {
+  const id = request.params.id;
+  const person = persons.find((p) => p.id === id);
+
+  const body = request.body;
+  if (!body.number) {
+    return response.status(400).json({ error: "number missing" });
+  }
+
+  if (person) {
+    const personIndex = persons.findIndex((p) => p.id === id);
+    persons[personIndex].number = body.number;
+    response.json(person);
+  } else {
+    response.status(204).end();
+  }
 });
 
 const generateId = () => {
