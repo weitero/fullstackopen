@@ -63,4 +63,4 @@
 - [x] 3.8*: Phonebook backend step 8
 - [x] 3.9 Phonebook backend step 9
 - [x] 3.10 Phonebook backend step 10
-- [ ] 3.11 Full Stack Phonebook
+- [x] 3.11 Full Stack Phonebook
