@@ -94,6 +94,7 @@ const App = () => {
         });
     } else {
       if (
+        newNumber &&
         confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)
       ) {
         const updatePersonObj = { ...personObj, number: newNumber };
