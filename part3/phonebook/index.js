@@ -58,7 +58,7 @@ app.delete("/api/persons/:id", (request, response) => {
     persons = persons.filter((p) => p.id !== id);
     response.json(person);
   } else {
-    response.status(204).end();
+    response.status(404).end();
   }
 });
 
@@ -76,7 +76,7 @@ app.put("/api/persons/:id", (request, response) => {
     persons[personIndex].number = body.number;
     response.json(person);
   } else {
-    response.status(204).end();
+    response.status(404).end();
   }
 });
 
