@@ -62,5 +62,5 @@
 - [x] 3.7: Phonebook backend step 7
 - [x] 3.8*: Phonebook backend step 8
 - [x] 3.9 Phonebook backend step 9
-- [ ] 3.10 Phonebook backend step 10
+- [x] 3.10 Phonebook backend step 10
 - [ ] 3.11 Full Stack Phonebook
