@@ -50,3 +50,14 @@
 - [x] 2.18* Data for countries, step 1
 - [x] 2.19*: Data for countries, step 2
 - [x] 2.20*: Data for countries, step 3
+
+### Part 3
+
+- [ ] 3.1: Phonebook backend step 1
+- [ ] 3.2: Phonebook backend step 2
+- [ ] 3.3: Phonebook backend step 3
+- [ ] 3.4: Phonebook backend step 4
+- [ ] 3.5: Phonebook backend step 5
+- [ ] 3.6: Phonebook backend step 6
+- [ ] 3.7: Phonebook backend step 7
+- [ ] 3.8*: Phonebook backend step 8
