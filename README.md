@@ -59,5 +59,5 @@
 - [x] 3.4: Phonebook backend step 4
 - [x] 3.5: Phonebook backend step 5
 - [x] 3.6: Phonebook backend step 6
-- [ ] 3.7: Phonebook backend step 7
+- [x] 3.7: Phonebook backend step 7
 - [ ] 3.8*: Phonebook backend step 8
