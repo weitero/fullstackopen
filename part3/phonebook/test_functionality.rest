@@ -1,1 +1,29 @@
 DELETE http://localhost:3001/api/persons/1
+
+
+###
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+  "name": "Santa Claus",
+  "number": "040-39-12-39"
+}
+
+
+###
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+  "name": "Santa Claus"
+}
+
+
+###
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+  "number": "040-39-12-39"
+}
