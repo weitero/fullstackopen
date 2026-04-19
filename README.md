@@ -67,7 +67,7 @@
 - [x] 3.12: Command-line database
 - [x] 3.13: Phonebook database, step 1
 - [x] 3.14: Phonebook database, step 2
-- [ ] 3.15: Phonebook database, step 3
+- [x] 3.15: Phonebook database, step 3
 - [ ] 3.16: Phonebook database, step 4
 - [ ] 3.17*: Phonebook database, step 5
 - [ ] 3.18*: Phonebook database step 6
