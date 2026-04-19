@@ -63,21 +63,20 @@ app.delete("/api/persons/:id", (request, response, next) => {
 });
 
 app.put("/api/persons/:id", (request, response) => {
-  const id = request.params.id;
-  const person = persons.find((p) => p.id === id);
+  const { name, number } = request.body;
+  Person.findById(request.params.id)
+    .then((p) => {
+      if (!p) {
+        return response.status(404).end();
+      }
+      p.name = name;
+      p.number = number;
 
-  const body = request.body;
-  if (!body.number) {
-    return response.status(400).json({ error: "number missing" });
-  }
-
-  if (person) {
-    const personIndex = persons.findIndex((p) => p.id === id);
-    persons[personIndex].number = body.number;
-    response.json(person);
-  } else {
-    response.status(404).end();
-  }
+      return p.save().then((updatedPerson) => {
+        response.json(updatedPerson);
+      });
+    })
+    .catch((err) => next(err));
 });
 
 const generateId = () => {
@@ -91,11 +90,6 @@ app.post("/api/persons", (request, response) => {
 
   if (!body.name || !body.number) {
     return response.status(400).json({ error: "name and/or number missing" });
-  }
-
-  const names = persons.map((p) => p.name);
-  if (names.includes(body.name)) {
-    return response.status(400).json({ error: "name must be unique" });
   }
 
   const person = new Person({
