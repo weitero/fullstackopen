@@ -84,15 +84,15 @@ const generateId = () => {
 };
 
 app.post("/api/persons", (request, response) => {
-  const body = request.body;
+  const { name, number } = request.body;
 
-  if (!body.name || !body.number) {
+  if (!name || !number) {
     return response.status(400).json({ error: "name and/or number missing" });
   }
 
   const person = new Person({
-    name: body.name,
-    number: body.number,
+    name: name,
+    number: number,
     id: generateId(),
   });
 
