@@ -109,6 +109,17 @@ app.post("/api/persons", (request, response) => {
   });
 });
 
+// error-handling middleware has to be the last loaded middleware, also all the
+// routes should be registered before the error-handler!
+const errorHandler = (err, request, response, next) => {
+  console.error(err.message);
+  if (err.name === "CastError") {
+    return response.status(400).send({ error: "malformatted id" });
+  }
+  next(err);
+};
+app.use(errorHandler);
+
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
