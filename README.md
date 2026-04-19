@@ -65,7 +65,7 @@
 - [x] 3.10 Phonebook backend step 10
 - [x] 3.11 Full Stack Phonebook
 - [x] 3.12: Command-line database
-- [ ] 3.13: Phonebook database, step 1
+- [x] 3.13: Phonebook database, step 1
 - [ ] 3.14: Phonebook database, step 2
 - [ ] 3.15: Phonebook database, step 3
 - [ ] 3.16: Phonebook database, step 4

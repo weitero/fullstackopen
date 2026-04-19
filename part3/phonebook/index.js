@@ -1,5 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
+const Person = require("./models/note");
 const app = express();
 
 app.use(express.json());
@@ -34,7 +35,9 @@ let persons = [
 ];
 
 app.get("/api/persons", (request, response) => {
-  response.json(persons);
+  Person.find({}).then((persons) => {
+    response.json(persons);
+  });
 });
 
 app.get("/info", (request, response) => {
