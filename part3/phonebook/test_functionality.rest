@@ -27,3 +27,11 @@ Content-Type: application/json
 {
   "number": "040-39-12-39"
 }
+
+
+###
+GET http://localhost:3001/api/persons/69e51cb13c2e8b058246db8c
+
+
+###
+GET http://localhost:3001/info

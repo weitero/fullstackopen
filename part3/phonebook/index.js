@@ -41,17 +41,15 @@ app.get("/api/persons", (request, response) => {
 });
 
 app.get("/info", (request, response) => {
-  response.send(`Phonebook has info for ${persons.length} people</br>${String(new Date())}`);
+  Person.find({}).then((persons) => {
+    response.send(`Phonebook has info for ${persons.length} people</br>${String(new Date())}`);
+  });
 });
 
 app.get("/api/persons/:id", (request, response) => {
-  const id = request.params.id;
-  const person = persons.find((p) => p.id === id);
-  if (person) {
-    response.json(person);
-  } else {
-    response.status(404).end();
-  }
+  Person.findById(request.params.id).then((p) => {
+    response.json(p);
+  });
 });
 
 app.delete("/api/persons/:id", (request, response, next) => {

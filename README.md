@@ -70,4 +70,4 @@
 - [x] 3.15: Phonebook database, step 3
 - [x] 3.16: Phonebook database, step 4
 - [x] 3.17*: Phonebook database, step 5
-- [ ] 3.18*: Phonebook database step 6
+- [x] 3.18*: Phonebook database step 6
