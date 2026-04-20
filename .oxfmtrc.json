@@ -1,0 +1,17 @@
+{
+  "jsdoc": {
+    "bracketSpacing": true,
+    "descriptionTag": true,
+    "descriptionWithDot": true,
+    "preferCodeFences": true,
+    "separateReturnsFromParam": true,
+    "separateTagGroups": true
+  },
+  "objectWrap": "collapse",
+  "proseWrap": "always",
+  "quoteProps": "consistent",
+  "semi": false,
+  "singleQuote": true,
+  "sortTailwindcss": true,
+  "vueIndentScriptAndStyle": true
+}
