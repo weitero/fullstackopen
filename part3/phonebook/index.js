@@ -37,7 +37,7 @@ app.delete("/api/persons/:id", (request, response, next) => {
     .catch((err) => next(err));
 });
 
-app.put("/api/persons/:id", (request, response) => {
+app.put("/api/persons/:id", (request, response, next) => {
   const { name, number } = request.body;
   Person.findById(request.params.id)
     .then((p) => {
@@ -47,9 +47,12 @@ app.put("/api/persons/:id", (request, response) => {
       p.name = name;
       p.number = number;
 
-      return p.save().then((updatedPerson) => {
-        response.json(updatedPerson);
-      });
+      return p
+        .save()
+        .then((updatedPerson) => {
+          response.json(updatedPerson);
+        })
+        .catch((err) => next(err));
     })
     .catch((err) => next(err));
 });
