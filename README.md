@@ -73,5 +73,5 @@
 - [x] 3.18*: Phonebook database step 6
 - [x] 3.19*: Phonebook database, step 7
 - [x] 3.20*: Phonebook database, step 8
-- [ ] 3.21 Deploying the database backend to production
+- [x] 3.21 Deploying the database backend to production
 - [ ] 3.22: Lint configuration
