@@ -116,8 +116,11 @@ const App = () => {
               setMessage(null);
             }, 1500);
           })
-          .catch(() => {
-            setErrorMessage(`Information of ${newName} has already been removed from server`);
+          .catch((err) => {
+            setErrorMessage(
+              err.response.data.error ||
+                `Information of ${newName} has already been removed from server`,
+            );
             setTimeout(() => {
               setErrorMessage(null);
             }, 1500);
