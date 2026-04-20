@@ -60,22 +60,19 @@ const generateId = () => {
   return String(Math.floor(Math.random() * 1_000_000_000));
 };
 
-app.post("/api/persons", (request, response) => {
-  const { name, number } = request.body;
-
-  if (!name || !number) {
-    return response.status(400).json({ error: "name and/or number missing" });
-  }
-
+app.post("/api/persons", (request, response, next) => {
   const person = new Person({
-    name: name,
-    number: number,
+    name: request.body.name,
+    number: request.body.number,
     id: generateId(),
   });
 
-  person.save().then((savedPerson) => {
-    response.json(savedPerson);
-  });
+  person
+    .save()
+    .then((savedPerson) => {
+      response.json(savedPerson);
+    })
+    .catch((err) => next(err));
 });
 
 // error-handling middleware has to be the last loaded middleware, also all the
@@ -84,6 +81,8 @@ const errorHandler = (err, request, response, next) => {
   console.error(err.message);
   if (err.name === "CastError") {
     return response.status(400).send({ error: "malformatted id" });
+  } else if (err.name === "ValidationError") {
+    return response.status(400).json({ error: err.message });
   }
   next(err);
 };
