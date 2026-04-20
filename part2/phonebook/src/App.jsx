@@ -90,14 +90,14 @@ const App = () => {
           setMessage(`Added ${newName}`);
           setTimeout(() => {
             setMessage(null);
-          }, 1500);
+          }, 3000);
         })
         .catch((err) => {
           console.log(err.response.data.error);
           setErrorMessage(err.response.data.error);
           setTimeout(() => {
             setErrorMessage(null);
-          }, 1500);
+          }, 3000);
         });
     } else {
       if (
@@ -114,7 +114,7 @@ const App = () => {
             setMessage(`Updated ${newName}'s number`);
             setTimeout(() => {
               setMessage(null);
-            }, 1500);
+            }, 3000);
           })
           .catch((err) => {
             setErrorMessage(
@@ -123,7 +123,7 @@ const App = () => {
             );
             setTimeout(() => {
               setErrorMessage(null);
-            }, 1500);
+            }, 3000);
           });
       }
     }
@@ -139,13 +139,13 @@ const App = () => {
         setMessage(`Deleted ${pObj.name}`);
         setTimeout(() => {
           setMessage(null);
-        }, 1500);
+        }, 3000);
       })
       .catch(() => {
         setErrorMessage(`Information of ${newName} has already been removed from server`);
         setTimeout(() => {
           setErrorMessage(null);
-        }, 1500);
+        }, 3000);
       });
   };
 
