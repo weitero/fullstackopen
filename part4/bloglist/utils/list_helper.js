@@ -17,19 +17,34 @@ const favoriteBlog = (blogs) => {
 }
 
 const mostBlogs = (blogs) => {
-  const reducer = (counts, item) => {
-    if (counts[item.author]) {
-      counts[item.author] += 1
-    } else {
-      counts[item.author] = 1
-    }
-    return counts
-  }
-  const counts = blogs.reduce(reducer, {})
-  return Object.keys(counts).reduce((prev, current) => {
-    const maxKey = counts[prev] > counts[current] ? prev : current
-    return { author: maxKey, blogs: counts[maxKey] }
-  })
+  // const reducer = (counts, item) => {
+  //   if (counts[item.author]) {
+  //     counts[item.author] += 1
+  //   } else {
+  //     counts[item.author] = 1
+  //   }
+  //   return counts
+  // }
+  // const counts = blogs.reduce(reducer, {})
+  // return Object.keys(counts).reduce((prev, current) => {
+  //   const maxKey = counts[prev] > counts[current] ? prev : current
+  //   return { author: maxKey, blogs: counts[maxKey] }
+  // })
+  // Using lodash
+  const _ = require('lodash')
+  return _.zipObject(
+    ['author', 'blogs'],
+    _.maxBy(
+      _.toPairs(
+        _.countBy(blogs, (o) => {
+          return o.author
+        }),
+      ),
+      (o) => {
+        return o[1]
+      },
+    ),
+  )
 }
 
 module.exports = { dummy, totalLikes, favoriteBlog, mostBlogs }
