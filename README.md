@@ -83,5 +83,5 @@
 - [x] 4.3: Helper Functions and Unit Tests, step 1
 - [x] 4.4: Helper Functions and Unit Tests, step 2
 - [x] 4.5*: Helper Functions and Unit Tests, step 3
-- [ ] 4.6*: Helper Functions and Unit Tests, step 4
+- [x] 4.6*: Helper Functions and Unit Tests, step 4
 - [ ] 4.7*: Helper Functions and Unit Tests, step 5
