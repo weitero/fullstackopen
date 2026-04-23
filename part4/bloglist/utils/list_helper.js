@@ -1,3 +1,5 @@
+const _ = require('lodash')
+
 const dummy = (blogs) => {
   return 1
 }
@@ -31,7 +33,6 @@ const mostBlogs = (blogs) => {
   //   return { author: maxKey, blogs: counts[maxKey] }
   // })
   // Using lodash
-  const _ = require('lodash')
   return _.zipObject(
     ['author', 'blogs'],
     _.maxBy(
@@ -47,4 +48,20 @@ const mostBlogs = (blogs) => {
   )
 }
 
-module.exports = { dummy, totalLikes, favoriteBlog, mostBlogs }
+const mostLikes = (blogs) => {
+  return _.zipObject(
+    ['author', 'likes'],
+    _.maxBy(
+      _.toPairs(
+        _.mapValues(
+          _.groupBy(blogs, (o) => o.author),
+          (o) => _.sumBy(o, (o) => o.likes),
+        ),
+        (o) => o[1],
+      ),
+      (o) => o[1],
+    ),
+  )
+}
+
+module.exports = { dummy, totalLikes, favoriteBlog, mostBlogs, mostLikes }
