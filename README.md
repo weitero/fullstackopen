@@ -87,7 +87,7 @@
 - [x] 4.7\*: Helper Functions and Unit Tests, step 5
 - [x] 4.8: Blog List Tests, step 1
 - [x] 4.9: Blog List Tests, step 2
-- [ ] 4.10: Blog List Tests, step 3
+- [x] 4.10: Blog List Tests, step 3
 - [ ] 4.11\*: Blog List Tests, step 4
 - [ ] 4.12\*: Blog List tests, step 5
 - [ ] 4.13 Blog List Expansions, step 1
