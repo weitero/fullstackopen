@@ -70,7 +70,7 @@ test('missing url causes 400 Bad Request', async () => {
   await api.post('/api/blogs').send(newBlog).expect(400)
 })
 
-test.only('a blog can be deleted', async () => {
+test('a blog can be deleted', async () => {
   const blogsAtStart = await Blog.find({})
   const blogToDelete = blogsAtStart[0]
 
@@ -82,6 +82,18 @@ test.only('a blog can be deleted', async () => {
   assert(!ids.includes(blogToDelete.id))
 
   assert.strictEqual(blogAtEnd.length, initialBlogs.length - 1)
+})
+
+test.only('likes of a blog can be updated', async () => {
+  const newBlog = { likes: '99' }
+  const blogsAtStart = await Blog.find({})
+  const blogToUpdate = blogsAtStart[0]
+
+  await api.put(`/api/blogs/${blogToUpdate.id}`).send(newBlog).expect(201)
+
+  const blogUpdated = await Blog.findById(blogToUpdate.id)
+
+  assert.strictEqual(blogUpdated.likes, newBlog.likes)
 })
 
 after(async () => {
