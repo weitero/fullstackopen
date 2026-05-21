@@ -20,14 +20,14 @@ beforeEach(async () => {
   await blogObject.save()
 })
 
-test.only('blogs are returned as json', async () => {
+test('blogs are returned as json', async () => {
   await api
     .get('/api/blogs')
     .expect(200)
     .expect('Content-Type', /application\/json/)
 })
 
-test.only('unique identifier property of the blog posts is named id', async () => {
+test('unique identifier property of the blog posts is named id', async () => {
   const blogs = await api.get('/api/blogs')
   assert.equal(blogs._body[0].hasOwnProperty('id'), true)
   assert.equal(blogs._body[1].hasOwnProperty('id'), true)
@@ -35,7 +35,7 @@ test.only('unique identifier property of the blog posts is named id', async () =
   assert.equal(blogs._body[1].hasOwnProperty('_id'), false)
 })
 
-test.only('a valid blog can be added', async () => {
+test('a valid blog can be added', async () => {
   const newBlog = { title: 'TITLE', author: 'AUTHOR', url: 'URL', likes: '0' }
   await api
     .post('/api/blogs')
@@ -48,7 +48,7 @@ test.only('a valid blog can be added', async () => {
   assert(titles.includes('TITLE'))
 })
 
-test.only('likes will default to the value 0', async () => {
+test('likes will default to the value 0', async () => {
   const newBlog = { title: 'TITLE', author: 'AUTHOR', url: 'URL' }
   await api
     .post('/api/blogs')
@@ -60,14 +60,28 @@ test.only('likes will default to the value 0', async () => {
   assert.strictEqual(res.likes, '0')
 })
 
-test.only('missing title causes 400 Bad Request', async () => {
+test('missing title causes 400 Bad Request', async () => {
   const newBlog = { author: 'AUTHOR', url: 'URL' }
   await api.post('/api/blogs').send(newBlog).expect(400)
 })
 
-test.only('missing url causes 400 Bad Request', async () => {
+test('missing url causes 400 Bad Request', async () => {
   const newBlog = { title: 'TITLE', author: 'AUTHOR' }
   await api.post('/api/blogs').send(newBlog).expect(400)
+})
+
+test.only('a blog can be deleted', async () => {
+  const blogsAtStart = await Blog.find({})
+  const blogToDelete = blogsAtStart[0]
+
+  await api.delete(`/api/blogs/${blogToDelete.id}`).expect(204)
+
+  const blogAtEnd = await Blog.find({})
+
+  const ids = blogAtEnd.map((b) => b.id)
+  assert(!ids.includes(blogToDelete.id))
+
+  assert.strictEqual(blogAtEnd.length, initialBlogs.length - 1)
 })
 
 after(async () => {

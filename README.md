@@ -90,5 +90,5 @@
 - [x] 4.10: Blog List Tests, step 3
 - [x] 4.11\*: Blog List Tests, step 4
 - [x] 4.12\*: Blog List tests, step 5
-- [ ] 4.13 Blog List Expansions, step 1
+- [x] 4.13 Blog List Expansions, step 1
 - [ ] 4.14 Blog List Expansions, step 2
