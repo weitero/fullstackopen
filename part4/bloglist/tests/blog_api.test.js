@@ -60,6 +60,16 @@ test.only('likes will default to the value 0', async () => {
   assert.strictEqual(res.likes, '0')
 })
 
+test.only('missing title causes 400 Bad Request', async () => {
+  const newBlog = { author: 'AUTHOR', url: 'URL' }
+  await api.post('/api/blogs').send(newBlog).expect(400)
+})
+
+test.only('missing url causes 400 Bad Request', async () => {
+  const newBlog = { title: 'TITLE', author: 'AUTHOR' }
+  await api.post('/api/blogs').send(newBlog).expect(400)
+})
+
 after(async () => {
   await mongoose.connection.close()
 })
