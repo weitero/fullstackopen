@@ -1,0 +1,23 @@
+{
+  "experimentalTernaries": true,
+  "experimentalOperatorPosition": "start",
+  "semi": false,
+  "singleQuote": true,
+  "objectWrap": "collapse",
+  "checkIgnorePragma": true,
+  "proseWrap": "always",
+  "vueIndentScriptAndStyle": true,
+  "plugins": [
+    "prettier-plugin-awk"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.awk"
+      ],
+      "options": {
+        "tabWidth": 4
+      }
+    }
+  ]
+}
