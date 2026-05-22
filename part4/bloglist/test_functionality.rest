@@ -11,3 +11,14 @@ Content-Type: application/json
   "url": "http://example.com/blog",
   "likes": "77"
 }
+
+
+###
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "username": "akio",
+  "password": "Password123!",
+  "name": "Hoshino Akio"
+}

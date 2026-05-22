@@ -84,7 +84,7 @@ test('a blog can be deleted', async () => {
   assert.strictEqual(blogAtEnd.length, initialBlogs.length - 1)
 })
 
-test.only('likes of a blog can be updated', async () => {
+test('likes of a blog can be updated', async () => {
   const newBlog = { likes: '99' }
   const blogsAtStart = await Blog.find({})
   const blogToUpdate = blogsAtStart[0]
