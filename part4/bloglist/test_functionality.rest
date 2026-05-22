@@ -2,37 +2,13 @@ GET http://localhost:3003/api/blogs
 
 
 ###
-POST http://localhost:3003/api/blogs
-Content-Type: application/json
-
-{
-  "title": "Santa Claus",
-  "author": "Akio",
-  "url": "http://example.com/blog",
-  "likes": "77"
-}
-
-
-###
 POST http://localhost:3003/api/users
 Content-Type: application/json
 
 {
-  "username": "akio",
+  "username": "user1",
   "password": "Password123!",
-  "name": "Hoshino Akio"
-}
-
-
-###
-POST http://localhost:3003/api/blogs
-Content-Type: application/json
-
-{
-  "title": "Santa Claus",
-  "author": "Akio",
-  "url": "http://example.com/blog",
-  "userId": "6a108f5836affcc2850e4e3b"
+  "name": "User One"
 }
 
 
@@ -41,7 +17,7 @@ POST http://localhost:3003/api/login
 Content-Type: application/json
 
 {
-  "username": "akio",
+  "username": "user1",
   "password": "Password123!"
 }
 
@@ -49,30 +25,23 @@ Content-Type: application/json
 ###
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFraW8iLCJpZCI6IjZhMTA4ZjU4MzZhZmZjYzI4NTBlNGUzYiIsImlhdCI6MTc3OTQ3MTYzOX0.VojKS-TEeiILzpPaN0DCKPUx1GW7TQy7qru38ql3Gxc
+Authorization: Bearer {{$dotenv USERONE_TOKEN}}
 
 {
-  "title": "Another Title2",
-  "author": "Akio",
+  "title": "Title One",
+  "author": "User One",
   "url": "http://example.com/blog"
 }
 
 
 ###
-# try to delete as akio (expect success)
-DELETE  http://localhost:3003/api/blogs/6a10a55249fa924782c2a142
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFraW8iLCJpZCI6IjZhMTA4ZjU4MzZhZmZjYzI4NTBlNGUzYiIsImlhdCI6MTc3OTQ3MTYzOX0.VojKS-TEeiILzpPaN0DCKPUx1GW7TQy7qru38ql3Gxc
-
-
-###
 POST http://localhost:3003/api/users
 Content-Type: application/json
 
 {
-  "username": "josee",
+  "username": "user2",
   "password": "Password123!",
-  "name": "Josee"
+  "name": "User Two"
 }
 
 
@@ -81,13 +50,20 @@ POST http://localhost:3003/api/login
 Content-Type: application/json
 
 {
-  "username": "josee",
+  "username": "user2",
   "password": "Password123!"
 }
 
 
 ###
-# try to delete as josee (expect 'no permission')
-DELETE  http://localhost:3003/api/blogs/6a10a55249fa924782c2a142
+# try to delete as user2 (expect 'no permission')
+DELETE  http://localhost:3003/api/blogs/6a10b9fd03eaf312361ebfbe
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Impvc2VlIiwiaWQiOiI2YTEwOWQxNGNjZDlhNzQ3ZjYyODE2ODIiLCJpYXQiOjE3Nzk0NzM5MjV9.eANMWuxtbM1wseu6fAS0c7Wu9JL93wgAXESgZ1AGXOo
+Authorization: Bearer {{$dotenv USERTWO_TOKEN}}
+
+
+###
+# try to delete as user1 (expect success)
+DELETE  http://localhost:3003/api/blogs/6a10b9fd03eaf312361ebfbe
+Content-Type: application/json
+Authorization: Bearer {{$dotenv USERONE_TOKEN}}
