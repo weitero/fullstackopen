@@ -22,3 +22,15 @@ Content-Type: application/json
   "password": "Password123!",
   "name": "Hoshino Akio"
 }
+
+
+###
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+  "title": "Santa Claus",
+  "author": "Akio",
+  "url": "http://example.com/blog",
+  "userId": "6a108f5836affcc2850e4e3b"
+}
