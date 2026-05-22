@@ -1,9 +1,13 @@
 const assert = require('node:assert')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 const { test, after, beforeEach } = require('node:test')
 const mongoose = require('mongoose')
 const supertest = require('supertest')
 const app = require('../app')
 const Blog = require('../models/blog')
+const User = require('../models/user')
+let token = ''
 
 const api = supertest(app)
 
@@ -14,9 +18,18 @@ const initialBlogs = [
 
 beforeEach(async () => {
   await Blog.deleteMany({})
-  let blogObject = new Blog(initialBlogs[0])
+  await User.deleteMany({})
+
+  const passwordHash = await bcrypt.hash('sekret', 10)
+  const user = new User({ username: 'testblog', passwordHash })
+  const savedUser = await user.save()
+
+  const userForToken = { username: user.username, id: user._id }
+  token = jwt.sign(userForToken, process.env.SECRET)
+
+  let blogObject = new Blog({ ...initialBlogs[0], user: savedUser._id })
   await blogObject.save()
-  blogObject = new Blog(initialBlogs[1])
+  blogObject = new Blog({ ...initialBlogs[1], user: savedUser._id })
   await blogObject.save()
 })
 
@@ -39,6 +52,7 @@ test('a valid blog can be added', async () => {
   const newBlog = { title: 'TITLE', author: 'AUTHOR', url: 'URL', likes: '0' }
   await api
     .post('/api/blogs')
+    .set('Authorization', `Bearer ${token}`)
     .send(newBlog)
     .expect(201)
     .expect('Content-Type', /application\/json/)
@@ -52,6 +66,7 @@ test('likes will default to the value 0', async () => {
   const newBlog = { title: 'TITLE', author: 'AUTHOR', url: 'URL' }
   await api
     .post('/api/blogs')
+    .set('Authorization', `Bearer ${token}`)
     .send(newBlog)
     .expect(201)
     .expect('Content-Type', /application\/json/)
@@ -62,19 +77,22 @@ test('likes will default to the value 0', async () => {
 
 test('missing title causes 400 Bad Request', async () => {
   const newBlog = { author: 'AUTHOR', url: 'URL' }
-  await api.post('/api/blogs').send(newBlog).expect(400)
+  await api.post('/api/blogs').set('Authorization', `Bearer ${token}`).send(newBlog).expect(400)
 })
 
 test('missing url causes 400 Bad Request', async () => {
   const newBlog = { title: 'TITLE', author: 'AUTHOR' }
-  await api.post('/api/blogs').send(newBlog).expect(400)
+  await api.post('/api/blogs').set('Authorization', `Bearer ${token}`).send(newBlog).expect(400)
 })
 
 test('a blog can be deleted', async () => {
   const blogsAtStart = await Blog.find({})
   const blogToDelete = blogsAtStart[0]
 
-  await api.delete(`/api/blogs/${blogToDelete.id}`).expect(204)
+  await api
+    .delete(`/api/blogs/${blogToDelete.id}`)
+    .set('Authorization', `Bearer ${token}`)
+    .expect(204)
 
   const blogAtEnd = await Blog.find({})
 
