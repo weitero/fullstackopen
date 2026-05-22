@@ -99,5 +99,5 @@
 - [x] 4.19: Blog List Expansion, step 7
 - [x] 4.20\*: Blog List Expansion, step 8
 - [x] 4.21\*: Blog List Expansion, step 9
-- [ ] 4.22\*: Blog List Expansion, step 10
+- [x] 4.22\*: Blog List Expansion, step 10
 - [ ] 4.23\*: Blog List Expansion, step 11
