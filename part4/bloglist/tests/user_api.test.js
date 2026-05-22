@@ -52,6 +52,74 @@ describe('when there is initially one user in db', () => {
 
     assert.strictEqual(usersAtEnd.length, usersAtStart.length)
   })
+
+  test.only('creation fails if username is missing', async () => {
+    const usersAtStart = await User.find({})
+
+    const newUser = { password: 'sekret', name: 'Superuser' }
+
+    const result = await api
+      .post('/api/users')
+      .send(newUser)
+      .expect(400)
+      .expect('Content-Type', /application\/json/)
+
+    const usersAtEnd = await User.find({})
+    assert(result.body.error.includes('username and password must be given'))
+
+    assert.strictEqual(usersAtEnd.length, usersAtStart.length)
+  })
+
+  test.only('creation fails if password is missing', async () => {
+    const usersAtStart = await User.find({})
+
+    const newUser = { username: 'root', name: 'Superuser' }
+
+    const result = await api
+      .post('/api/users')
+      .send(newUser)
+      .expect(400)
+      .expect('Content-Type', /application\/json/)
+
+    const usersAtEnd = await User.find({})
+    assert(result.body.error.includes('username and password must be given'))
+
+    assert.strictEqual(usersAtEnd.length, usersAtStart.length)
+  })
+
+  test.only('creation fails if username is too short', async () => {
+    const usersAtStart = await User.find({})
+
+    const newUser = { username: 'ro', password: 'sekret', name: 'Superuser' }
+
+    const result = await api
+      .post('/api/users')
+      .send(newUser)
+      .expect(400)
+      .expect('Content-Type', /application\/json/)
+
+    const usersAtEnd = await User.find({})
+    assert(result.body.error.includes('username and password must be at least 3 characters long'))
+
+    assert.strictEqual(usersAtEnd.length, usersAtStart.length)
+  })
+
+  test.only('creation fails if password is too short', async () => {
+    const usersAtStart = await User.find({})
+
+    const newUser = { username: 'root', password: 'se', name: 'Superuser' }
+
+    const result = await api
+      .post('/api/users')
+      .send(newUser)
+      .expect(400)
+      .expect('Content-Type', /application\/json/)
+
+    const usersAtEnd = await User.find({})
+    assert(result.body.error.includes('username and password must be at least 3 characters long'))
+
+    assert.strictEqual(usersAtEnd.length, usersAtStart.length)
+  })
 })
 
 after(async () => {

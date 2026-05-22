@@ -93,7 +93,7 @@
 - [x] 4.13 Blog List Expansions, step 1
 - [x] 4.14 Blog List Expansions, step 2
 - [x] 4.15: Blog List Expansion, step 3
-- [ ] 4.16\*: Blog List Expansion, step 4
+- [x] 4.16\*: Blog List Expansion, step 4
 - [ ] 4.17: Blog List Expansion, step 5
 - [ ] 4.18: Blog List Expansion, step 6
 - [ ] 4.19: Blog List Expansion, step 7
