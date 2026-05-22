@@ -3,7 +3,7 @@
 ## Exercises
 
 <details>
-<summary><h3>Part 0</h3></summary>
+<summary>Part 0</summary>
 
 - [x] 0.1: HTML
 - [x] 0.2: CSS
@@ -15,7 +15,7 @@
 </details>
 
 <details>
-<summary><h3>Part 1</h3></summary>
+<summary>Part 1</summary>
 
 - [x] 1.1: Course Information, step 1
 - [x] 1.2: Course Information, step 2
@@ -35,7 +35,7 @@
 </details>
 
 <details>
-<summary><h3>Part 2</h3></summary>
+<summary>Part 2</summary>
 
 - [x] 2.1: Course information step 6
 - [x] 2.2: Course information step 7
@@ -61,7 +61,7 @@
 </details>
 
 <details>
-<summary><h3>Part 3</h3></summary>
+<summary>Part 3</summary>
 
 - [x] 3.1: Phonebook backend step 1
 - [x] 3.2: Phonebook backend step 2
@@ -89,7 +89,7 @@
 </details>
 
 <details>
-<summary><h3>Part 4</h3></summary>
+<summary>Part 4</summary>
 
 - [x] 4.1 Blog List, step 1
 - [x] 4.2 Blog List, step 2
