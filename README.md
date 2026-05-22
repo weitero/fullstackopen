@@ -3,21 +3,19 @@
 ## Exercises
 
 <details>
-  <summary><h3>Part 0</h3></summary>
+<summary><h3>Part 0</h3></summary>
 
-  - [x] 0.1: HTML
-  - [x] 0.2: CSS
-  - [x] 0.3: HTML forms
-  - [x] 0.4: New note diagram
-  - [x] 0.5: Single page app diagram
-  - [x] 0.6: New note in Single page app diagram
+- [x] 0.1: HTML
+- [x] 0.2: CSS
+- [x] 0.3: HTML forms
+- [x] 0.4: New note diagram
+- [x] 0.5: Single page app diagram
+- [x] 0.6: New note in Single page app diagram
 
 </details>
 
-
-
-
-### Part 1
+<details>
+<summary><h3>Part 1</h3></summary>
 
 - [x] 1.1: Course Information, step 1
 - [x] 1.2: Course Information, step 2
@@ -34,7 +32,10 @@
 - [x] 1.13\*: anecdotes step 2
 - [x] 1.14\*: anecdotes step 3
 
-### Part 2
+</details>
+
+<details>
+<summary><h3>Part 2</h3></summary>
 
 - [x] 2.1: Course information step 6
 - [x] 2.2: Course information step 7
@@ -57,7 +58,10 @@
 - [x] 2.19\*: Data for countries, step 2
 - [x] 2.20\*: Data for countries, step 3
 
-### Part 3
+</details>
+
+<details>
+<summary><h3>Part 3</h3></summary>
 
 - [x] 3.1: Phonebook backend step 1
 - [x] 3.2: Phonebook backend step 2
@@ -82,7 +86,10 @@
 - [x] 3.21 Deploying the database backend to production
 - [x] 3.22: Lint configuration
 
-### Part 4
+</details>
+
+<details>
+<summary><h3>Part 4</h3></summary>
 
 - [x] 4.1 Blog List, step 1
 - [x] 4.2 Blog List, step 2
@@ -107,3 +114,7 @@
 - [x] 4.21\*: Blog List Expansion, step 9
 - [x] 4.22\*: Blog List Expansion, step 10
 - [x] 4.23\*: Blog List Expansion, step 11
+
+</details>
+
+### Part 5
