@@ -18,7 +18,7 @@ describe('when there is initially one user in db', () => {
     await user.save()
   })
 
-  test.only('creation succeeds with a fresh username', async () => {
+  test('creation succeeds with a fresh username', async () => {
     const usersAtStart = await User.find({})
 
     const newUser = { username: 'akio', password: 'Password123!', name: 'Hoshino Akio' }
@@ -36,7 +36,7 @@ describe('when there is initially one user in db', () => {
     assert(usernames.includes(newUser.username))
   })
 
-  test.only('creation fails with proper statuscode and message if username taken', async () => {
+  test('creation fails with proper statuscode and message if username taken', async () => {
     const usersAtStart = await User.find({})
 
     const newUser = { username: 'root', password: 'sekret', name: 'Superuser' }
@@ -53,7 +53,7 @@ describe('when there is initially one user in db', () => {
     assert.strictEqual(usersAtEnd.length, usersAtStart.length)
   })
 
-  test.only('creation fails if username is missing', async () => {
+  test('creation fails if username is missing', async () => {
     const usersAtStart = await User.find({})
 
     const newUser = { password: 'sekret', name: 'Superuser' }
@@ -70,7 +70,7 @@ describe('when there is initially one user in db', () => {
     assert.strictEqual(usersAtEnd.length, usersAtStart.length)
   })
 
-  test.only('creation fails if password is missing', async () => {
+  test('creation fails if password is missing', async () => {
     const usersAtStart = await User.find({})
 
     const newUser = { username: 'root', name: 'Superuser' }
@@ -87,7 +87,7 @@ describe('when there is initially one user in db', () => {
     assert.strictEqual(usersAtEnd.length, usersAtStart.length)
   })
 
-  test.only('creation fails if username is too short', async () => {
+  test('creation fails if username is too short', async () => {
     const usersAtStart = await User.find({})
 
     const newUser = { username: 'ro', password: 'sekret', name: 'Superuser' }
@@ -104,7 +104,7 @@ describe('when there is initially one user in db', () => {
     assert.strictEqual(usersAtEnd.length, usersAtStart.length)
   })
 
-  test.only('creation fails if password is too short', async () => {
+  test('creation fails if password is too short', async () => {
     const usersAtStart = await User.find({})
 
     const newUser = { username: 'root', password: 'se', name: 'Superuser' }
