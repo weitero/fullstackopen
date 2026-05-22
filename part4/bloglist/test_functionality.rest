@@ -52,7 +52,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFraW8iLCJpZCI6IjZhMTA4ZjU4MzZhZmZjYzI4NTBlNGUzYiIsImlhdCI6MTc3OTQ3MTYzOX0.VojKS-TEeiILzpPaN0DCKPUx1GW7TQy7qru38ql3Gxc
 
 {
-  "title": "Another Title",
+  "title": "Another Title2",
   "author": "Akio",
   "url": "http://example.com/blog"
 }
