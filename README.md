@@ -118,3 +118,8 @@
 </details>
 
 ### Part 5
+
+- [ ] 5.1: Blog List Frontend, step 1
+- [ ] 5.2: Blog List Frontend, step 2
+- [ ] 5.3: Blog List Frontend, step 3
+- [ ] 5.4: Blog List Frontend, step 4
